@@ -30,5 +30,5 @@ export const Title = styled.Text`
     font-size: 24px;
     line-height: 32px;
     max-width: 160px;
-    margin-vertical: 40px;
+    margin-vertical: 16px;
 `;

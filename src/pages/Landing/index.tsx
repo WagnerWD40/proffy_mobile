@@ -1,5 +1,5 @@
-import React from 'react';
-import { useNavigation } from '@react-navigation/native';
+import React, { useEffect, useState } from 'react';
+import { useNavigation, useFocusEffect } from '@react-navigation/native';
 
 import {
     Container,
@@ -18,8 +18,20 @@ import studyIcon from '../../assets/images/icons/study.png';
 import giveClassesIcon from '../../assets/images/icons/give-classes.png';
 import heartIcon from '../../assets/images/icons/heart.png';
 
+import api from '../../services/api';
+
 const Landing: React.FC = () => {
     const { navigate } = useNavigation();
+
+    const [connections, setConnections] = useState(0);
+
+    useFocusEffect(() => {
+        api.get('connections').then(response => {
+            const { total } = response.data;
+
+            setConnections(total);
+        });
+    });
 
     function handleNavigateToGiveClassesPage() {
         navigate('GiveClasses');
@@ -58,7 +70,7 @@ const Landing: React.FC = () => {
             </ButtonsContainer>
 
             <ConnectionsText>
-                Total de 285 coneções já realizadas {'  '}
+                Total de {connections} coneções já realizadas {'  '}
                 <Icon source={heartIcon} />
             </ConnectionsText>
         </Container>

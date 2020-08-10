@@ -42,8 +42,11 @@ const StudyTabs: React.FC = () => {
                 component={TeacherList}
                 options={{
                     tabBarLabel: 'Proffys',
-                    tabBarIcon: ({ color, size }) =>
-                        <Icon name="easel-outline" size={size} color={color} />
+                    tabBarIcon: ({ color, size, focused }) =>
+                        <Icon
+                            name="easel-outline"
+                            size={size}
+                            color={focused ? '#8257E5' : color} />
                 }}/>
 
             <Screen
@@ -51,8 +54,11 @@ const StudyTabs: React.FC = () => {
                 component={Favorites}
                 options={{
                     tabBarLabel: 'Favoritos',
-                    tabBarIcon: ({ color, size }) =>
-                        <Icon name="heart-outline" size={size} color={color} />
+                    tabBarIcon: ({ color, size, focused }) =>
+                        <Icon
+                            name="heart-outline"
+                            size={size}
+                            color={focused ? '#8257E5' : color} />
                 }}/>
 
         </Navigator>
